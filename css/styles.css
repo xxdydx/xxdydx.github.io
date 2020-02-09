@@ -55,6 +55,13 @@ main > .tagline {
 	color: white;
 }
 
+main > .cri {
+	font-size: 0.7rem;
+	margin: 1.5rem 0;
+	font-weight: 100;
+	color: white;
+}
+
 .icons-social i {
 	padding: 10px;
 	color: white;
