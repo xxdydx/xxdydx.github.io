@@ -138,6 +138,56 @@
     .dark .moon-icon {
       display: block;
     }
+
+    /* Book section styling */
+    .book-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .book-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      max-width: 100%;
+    }
+
+    .book-cover {
+      width: 100px;
+      height: auto;
+      border-radius: 4px;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .book-details {
+      flex: 1;
+    }
+
+    .book-details h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .book-subtitle {
+      color: var(--foreground);
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .book-info {
+      color: var(--muted-foreground);
+      font-size: 0.8rem;
+    }
+
+    .book-tagline {
+      color: var(--muted-foreground);
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+    }
   </style>
 </head>
 <body>
@@ -169,6 +219,16 @@
           <a href="https://nus.edu.sg" target="_blank" rel="noopener noreferrer">
             National University of Singapore</a>, majoring in Computer Science.
         </p>
+        <p>
+          You can contact me through
+           <a href="mailto:official@arul.me">
+             email</a>,  <a href="https://www.linkedin.com/in/arul-k/">
+             LinkedIn
+           </a>
+           or
+           <a href="https://t.me/xxdydx" target="_blank" rel="noopener noreferrer">
+             Telegram</a>.
+         </p>
       </section>
 
       <section>
@@ -189,6 +249,9 @@
 					<li>
           learning more about LLM optimisation and acceleration techniques
           </li>
+          <li>
+            learning more about C++ and low-level systems programming
+            </li>
           
         </ul>
       </section>
@@ -211,17 +274,40 @@
         </ul>
       </section>
 
+
       <section>
-        <p>
-         You can contact me through
-          <a href="mailto:official@arul.me">
-            email</a>,  <a href="https://www.linkedin.com/in/arul-k/">
-            LinkedIn
-          </a>
-          or
-          <a href="https://t.me/xxdydx" target="_blank" rel="noopener noreferrer">
-            Telegram</a>.
-        </p>
+        <h2>Books I'm reading / plan to read</h2>
+        <div class="book-container">
+          <div class="book-item">
+            <img src="images/why-greatness.jpg" alt="Why Greatness Cannot Be Planned" class="book-cover">
+            <div class="book-details">
+              <h3>Why Greatness Cannot Be Planned: The Myth of the Objective</h3>
+              <p class="book-subtitle">by Kenneth O. Stanley, Joel Lehman</p>
+              <p class="book-info">© 2015</p>
+            </div>
+          </div>
+          
+          <div class="book-item">
+            <img src="images/almanack-naval.jpg" alt="The Almanack Of Naval Ravikant" class="book-cover">
+            <div class="book-details">
+              <h3>The Almanack Of Naval Ravikant: A Guide to Wealth and Happiness</h3>
+              <p class="book-subtitle">by Eric Jorgenson</p>
+              <p class="book-info">© 2020</p>
+            </div>
+          </div>
+
+          <div class="book-item">
+            <img src="images/unicorn-project.jpg" alt="The Unicorn Project" class="book-cover">
+            <div class="book-details">
+              <h3>The Unicorn Project</h3>
+              <p class="book-subtitle">by Gene Kim</p>
+              <p class="book-info">© 2019</p>
+            </div>
+          </div>
+        </div>
+        <br />
+        <p>I'm on the hunt for really good book recommendations, hit me up if you have any!</p>
+
       </section>
     </main>
   </div>
