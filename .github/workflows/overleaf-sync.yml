@@ -20,7 +20,7 @@ jobs:
         env:
           OVERLEAF_PAT: ${{ secrets.OVERLEAF_PAT }}
         run: |
-          git clone https://${OVERLEAF_PAT}@git.overleaf.com/63d8aa6592025c99f0fb58fa overleaf
+          git clone https://git:${OVERLEAF_PAT}@git.overleaf.com/63d8aa6592025c99f0fb58fa overleaf
 
       - name: Copy latest CV PDF
         run: |
