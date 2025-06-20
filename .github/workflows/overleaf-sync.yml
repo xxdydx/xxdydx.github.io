@@ -1,0 +1,35 @@
+name: Sync Overleaf → GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out master branch
+        uses: actions/checkout@v3
+        with:
+          ref: master
+
+      - name: Clone Overleaf project
+        env:
+          OVERLEAF_PAT: ${{ secrets.OVERLEAF_PAT }}
+        run: |
+          git clone https://${OVERLEAF_PAT}@git.overleaf.com/63d8aa6592025c99f0fb58fa overleaf
+
+      - name: Copy latest CV PDF
+        run: |
+          cp overleaf/arul_cv.pdf resume/arul_cv.pdf
+
+      - name: Commit & push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add resume/arul_cv.pdf
+          git diff --quiet || git commit -m "Sync resume from Overleaf"
+          git push origin master
