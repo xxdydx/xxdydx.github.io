@@ -1,35 +1,82 @@
-name: Sync Overleaf → GitHub Pages
+name: Release Resume PDF
 
 on:
   push:
-    branches:
-      - master
-  workflow_dispatch:
+    tags:
+      - 'v*.*.*'
 
 jobs:
-  sync:
+  build_and_release:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out master branch
+      - name: Check out repository
         uses: actions/checkout@v3
         with:
-          ref: master
+          fetch-depth: 0
 
       - name: Clone Overleaf project
+        id: clone_overleaf
         env:
           OVERLEAF_PAT: ${{ secrets.OVERLEAF_PAT }}
         run: |
+          echo "Attempting to clone Overleaf project..."
           git clone https://git:${OVERLEAF_PAT}@git.overleaf.com/63d8aa6592025c99f0fb58fa overleaf
+          echo "Cloning successful."
+        continue-on-error: true
 
-      - name: Copy latest CV PDF
+      - name: Check if Overleaf clone failed
+        if: steps.clone_overleaf.outcome == 'failure'
         run: |
-          cp overleaf/arul_cv.pdf resume/arul_cv.pdf
+          echo "Error: Failed to clone Overleaf project. This could be due to an invalid OVERLEAF_PAT secret or network issues."
+          exit 1
 
-      - name: Commit & push changes
+      - name: Compile LaTeX to PDF
+        id: compile_latex
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: main.tex
+        working-directory: overleaf
+        continue-on-error: true
+
+      - name: Check if LaTeX compilation failed
+        if: steps.compile_latex.outcome == 'failure'
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add resume/arul_cv.pdf
-          git diff --quiet || git commit -m "Sync resume from Overleaf"
-          git push origin master
+          echo "Error: LaTeX compilation failed. Check the LaTeX logs for errors in your 'main.tex' file or missing LaTeX packages."
+          cat overleaf/*.log
+          exit 1
+
+      - name: Copy PDF to resumes/arul_cv.pdf
+        id: copy_pdf
+        run: |
+          echo "Attempting to copy PDF..."
+          mkdir -p resumes
+          if [ -d "overleaf" ] && [ -f "overleaf/main.pdf" ]; then
+            cp overleaf/main.pdf resumes/arul_cv.pdf
+            echo "PDF copied successfully."
+          else
+            echo "Error: Could not find either the 'overleaf' directory or the 'main.pdf' file after compilation."
+            exit 1
+          fi
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref_name }}
+          release_name: Resume ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Resume PDF
+        id: upload_pdf
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./resumes/arul_cv.pdf
+          asset_name: arul_cv.pdf
+          asset_content_type: application/pdf
