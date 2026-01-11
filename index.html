@@ -126,7 +126,7 @@
         margin-bottom: 1rem;
         display: flex;
         flex-direction: column;
-        gap: 0.25rem;
+        gap: 0.15rem;
       }
 
       li {
@@ -137,6 +137,16 @@
       
       li::marker {
         color: var(--muted-foreground);
+      }
+
+      li a {
+        color: inherit;
+        text-decoration: underline;
+      }
+
+      li a:hover {
+        color: var(--foreground);
+        opacity: 0.8;
       }
 
       .theme-toggle {
@@ -267,67 +277,89 @@
             <h1>arul kumaran</h1>
             <nav class="nav-links">
               <a href="https://blog.arul.me">my blog</a>
+              <a href="https://resume.arul.me">resume</a>
               <a href="https://github.com/xxdydx">github</a>
               <a href="https://www.linkedin.com/in/arul-k/">linkedin</a>
               <a href="mailto:official@arul.me">email</a>
             </nav>
           </div>
           <p>
-            i'm an undergraduate
+            I'm an undergraduate
             student at the
             <a
               href="https://nus.edu.sg"
               target="_blank"
               rel="noopener noreferrer"
             >
-              national university of singapore</a
-            >, majoring in computer science.
+              National University of Singapore</a
+            >, majoring in Computer Science.
           </p>
         </section>
 
         <section>
-          <h2>experiences</h2>
-          <ul>
-            <li>machine learning engineer intern at <a href="https://tiktok.com">tiktok</a></li>
-            <li>
-              software engineering intern at
-              <a
-                href="https://www.nikaplanet.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                >nika</a
-              >
-            </li>
+          <h2>Experiences</h2>
+          <div>
+            <strong>Machine Learning Engineer Intern (Incoming; Summer 2026)</strong>
+            <ul>
+              <li>Network Infrastructure for high-frequency trading.</li>
+            </ul>
+          </div>
 
-            <li>
-              software engineering intern at
-              <a
-                href="https://www.tech.gov.sg/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                govtech singapore</a
-              >
-            </li>
-            <li>
-              software engineering intern at
-              <a
-                href="https://nodeflair.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                nodeflair
-              </a>
-            </li>
-
-          </ul>
-        </section>
-
-        <section>
-          <h2>hire me!</h2>
-          <ul>
-            <li>i am really interested in machine learning and algorithmic optimisation problems. i'm proficient in c++, pytorch, CUDA programming, AI agent design, and model optimisation through my various ML internships and projects.</li>
-            <li>it's my dream to work in silicon valley someday, and i thrive most in fast-paced and high-impact environments. if you're a startup with interesting problems in the field of ML and willing to sponsor a j-1 visa, please hit me up!</li>
+          <div>
+            <strong>Machine Learning Engineer Intern at <a href="https://tiktok.com">TikTok </a> (Spring 2026)</strong>
+            <ul>
+              <li>Multi-modal search systems. C++ and PyTorch.</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Software Engineering Intern at
+            <a
+              href="https://www.nikaplanet.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Nika </a
+            > (Summer 2025)</strong>
+            <ul>
+              <li>Built an AI agent to automate geospatial analysis for various tasks such as tracking land cover changes and finding the nearest hospitals given a location.</li>
+              <li>Managed to automate the entire pipeline with a pretty high success rate, from finding the right dataset to generating a Python Jupyter Notebook to produce rich visualisations. Read more about it <a href="https://blog.arul.me/posts/designing-semantic-search-engine">here</a>.</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Open Source Contributor at
+            <a
+              href="https://www.sourceacademy.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Source Academy </a> (Spring 2025)</strong>
+            <ul>
+              <li>Implemented AI-powered marking of coding submissions and experimented with finetuning LLMs for this task.</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Software Engineering Intern at
+            <a
+              href="https://www.tech.gov.sg/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GovTech Singapore </a> (Summer 2024)</strong>
+            <ul>
+              <li>Built internal tooling to automate some testing tasks for the TechPass platform. Primarily used Golang and Angular.</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Software Engineering Intern at
+            <a
+              href="https://nodeflair.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Nodeflair </a> (Spring 2024)</strong>
+            <ul>
+              <li>Developed some AI-powered features for the platform and built a browser extension to autofill job applications.</li>
+            </ul>
+          </div>
         </section>
 
 
