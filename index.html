@@ -3,35 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>arul kumaran</title>
+    <title>Arul Kumaran</title>
+    <meta
+      name="description"
+      content="Arul Kumaran — Computer Science undergraduate at the National University of Singapore."
+    />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap"
       rel="stylesheet"
     />
     <style>
-      /* Base styles */
       :root {
-        --background: #fafafa;
-        --foreground: #0f0f0f;
-        --primary: #6366f1;
-        --primary-hover: #4f46e5;
-        --accent: #ec4899;
-        --muted: #f5f5f5;
-        --muted-foreground: #737373;
-        --border: #e5e5e5;
-        --card-bg: #ffffff;
-      }
-
-      .dark {
-        --background: #0a0a0a;
-        --foreground: #ededed;
-        --primary: #818cf8;
-        --primary-hover: #a5b4fc;
-        --accent: #f472b6;
-        --muted: #1a1a1a;
-        --muted-foreground: #a3a3a3;
-        --border: #262626;
-        --card-bg: #141414;
+        --bg: #000000;
+        --fg: #d6d3ce;
+        --heading: #f2efe9;
+        --muted: #8a8781;
+        --selection: #d6c79f;
       }
 
       * {
@@ -40,365 +30,209 @@
         box-sizing: border-box;
       }
 
+      html {
+        background-color: var(--bg);
+      }
+
+      ::selection {
+        background: var(--selection);
+        color: var(--bg);
+      }
+
+      ::-moz-selection {
+        background: var(--selection);
+        color: var(--bg);
+      }
+
       body {
-        font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, Helvetica, Arial, sans-serif;
-        background-color: var(--background);
-        color: var(--foreground);
-        line-height: 1.5;
+        font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: var(--bg);
+        color: var(--fg);
+        font-size: 16px;
+        line-height: 1.6;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        transition: background-color 0.3s ease, color 0.3s ease;
-        font-weight: 400;
-        letter-spacing: -0.01em;
       }
 
       .container {
-        max-width: 680px;
+        max-width: 40rem;
         margin: 0 auto;
-        padding: 3rem 1.5rem;
-      }
-      
-      @media (max-width: 640px) {
-        .container {
-          padding: 2rem 1.25rem;
-        }
-      }
-
-      header {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        margin-bottom: 3.5rem;
-      }
-
-      main {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      section {
-        margin-bottom: 0rem;
+        padding: 5.5rem 1.5rem 6rem;
       }
 
       h1 {
-        font-size: 1.75rem;
+        font-size: 2.0rem;
         font-weight: 600;
-        margin-bottom: 0rem;
-        letter-spacing: -0.02em;
-        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      h2 {
-        font-size: 1.25rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-        text-transform: lowercase;
+        color: var(--heading);
         letter-spacing: -0.01em;
-        color: var(--foreground);
-        opacity: 0.9;
+        margin-bottom: 1.0rem;
       }
 
       p {
-        color: var(--muted-foreground);
-        margin-bottom: 1rem;
-        font-size: 1rem;
-        line-height: 1.7;
+        margin-bottom: 1.4rem;
+        max-width: 39rem;
+      }
+
+      p:last-of-type {
+        margin-bottom: 0;
       }
 
       a {
-        color: var(--primary);
-        text-decoration: none;
-        transition: color 0.2s ease;
+        color: inherit;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        text-decoration-thickness: 1px;
+        text-decoration-color: var(--muted);
+        transition: color 0.15s ease, text-decoration-color 0.15s ease;
       }
 
       a:hover {
-        color: var(--primary-hover);
+        color: var(--heading);
+        text-decoration-color: var(--heading);
       }
 
-      ul {
-        list-style-type: disc;
-        padding-left: 1.25rem;
-        margin-bottom: 1rem;
+      .socials {
         display: flex;
-        flex-direction: column;
-        gap: 0.15rem;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 1.9rem;
       }
 
-      li {
-        color: var(--muted-foreground);
-        line-height: 1.7;
-        font-size: 1rem;
-      }
-      
-      li::marker {
-        color: var(--muted-foreground);
-      }
-
-      li a {
-        color: inherit;
-        text-decoration: underline;
-      }
-
-      li a:hover {
-        color: var(--foreground);
-        opacity: 0.8;
-      }
-
-      .theme-toggle {
-        background: none;
-        border: none;
-        cursor: pointer;
-        width: 2rem;
-        height: 2rem;
-        border-radius: 9999px;
-        display: flex;
+      .socials a {
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        color: var(--foreground);
-        transition: opacity 0.2s ease;
-      }
-
-      .theme-toggle:hover {
-        opacity: 0.7;
-      }
-
-      .sun-icon,
-      .moon-icon {
-        width: 1.25rem;
-        height: 1.25rem;
-      }
-
-      .sun-icon {
-        display: block;
-      }
-
-      .moon-icon {
-        display: none;
-      }
-
-      .dark .sun-icon {
-        display: none;
-      }
-
-      .dark .moon-icon {
-        display: block;
-      }
-
-      .intro-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 2rem;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 1.5rem;
-        align-items: center;
-      }
-
-      .nav-links a {
-        color: var(--muted-foreground);
-        font-weight: 400;
-        font-size: 0.9rem;
+        color: var(--muted);
         text-decoration: none;
-        transition: color 0.2s ease;
-        white-space: nowrap;
-        letter-spacing: -0.01em;
+        transition: color 0.15s ease;
       }
 
-      .nav-links a:hover {
-        color: var(--primary);
+      .socials a:hover {
+        color: var(--heading);
       }
-      
+
+      .socials svg {
+        width: 16px;
+        height: 16px;
+        display: block;
+      }
+
       @media (max-width: 640px) {
-        .intro-header {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 1rem;
-        }
-        
-        .nav-links {
-          gap: 1.25rem;
+        .container {
+          padding: 3.5rem 1.25rem 4rem;
         }
       }
-
-      /* Book section styling */
-      /* Removed book-container, book-item, book-cover, book-details, book-subtitle, book-info, book-tagline styles */
     </style>
   </head>
   <body>
     <div class="container">
-      <header>
-        <button class="theme-toggle" aria-label="Toggle dark mode">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="sun-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-          </svg>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="moon-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </button>
-      </header>
-
       <main>
-        <section>
-          <div class="intro-header">
-            <h1>arul kumaran</h1>
-            <nav class="nav-links">
-              <a href="https://blog.arul.me">my blog</a>
-              <a href="https://resume.arul.me">resume</a>
-              <a href="https://github.com/xxdydx">github</a>
-              <a href="https://www.linkedin.com/in/arul-k/">linkedin</a>
-              <a href="mailto:official@arul.me">email</a>
-            </nav>
-          </div>
-          <p>
-            I'm an undergraduate
-            student at the
-            <a
-              href="https://nus.edu.sg"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              National University of Singapore</a
-            >, majoring in Computer Science.
-          </p>
-        </section>
+        <h1>Arul Kumaran</h1>
 
-        <section>
-          <h2>Experiences</h2>
-          <div>
-            <strong>Machine Learning Engineer Intern at <a href="https://tiktok.com">TikTok </a> (Spring 2026)</strong>
-            <ul>
-              <li>Optimising ML models for music search. C++ and PyTorch.</li>
-            </ul>
-          </div>
-          <div>
-            <strong>Software Engineering Intern at
-            <a
-              href="https://www.nikaplanet.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Nika </a
-            > (Summer 2025)</strong>
-            <ul>
-              <li>Built an AI agent to automate geospatial analysis for various tasks such as tracking land cover changes and finding the nearest hospitals given a location.</li>
-              <li>Managed to automate the entire pipeline with a pretty high success rate, from finding the right dataset to generating a Python Jupyter Notebook to produce rich visualisations. Read more about it <a href="https://blog.arul.me/posts/designing-semantic-search-engine">here</a>.</li>
-            </ul>
-          </div>
-          <div>
-            <strong>Open Source Contributor at
-            <a
-              href="https://www.sourceacademy.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Source Academy </a> (Spring 2025)</strong>
-            <ul>
-              <li>Implemented AI-powered marking of coding submissions and experimented with finetuning LLMs for this task.</li>
-            </ul>
-          </div>
-          <div>
-            <strong>Software Engineering Intern at
-            <a
-              href="https://www.tech.gov.sg/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GovTech Singapore </a> (Summer 2024)</strong>
-            <ul>
-              <li>Built internal tooling to automate some testing tasks for the TechPass platform. Primarily used Golang and Angular.</li>
-            </ul>
-          </div>
-          <div>
-            <strong>Software Engineering Intern at
-            <a
-              href="https://nodeflair.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Nodeflair </a> (Spring 2024)</strong>
-            <ul>
-              <li>Developed some AI-powered features for the platform and built a browser extension to autofill job applications.</li>
-            </ul>
-          </div>
-        </section>
+        <p>
+          I'm from Singapore and I'm a junior at the
+          <a href="https://nus.edu.sg" target="_blank" rel="noopener noreferrer"
+            >National University of Singapore</a
+          >, majoring in CS+Statistics. My interest lies in training ML models for specific purposes and making them better, faster, and cheaper to run.
+        </p>
 
+        <p>
+          I'm working on cloud-edge inference routing for agents at the NUS Scalable AI Lab.
+           Previously, I've worked on training search relevance models for music at
+          <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer"
+            >TikTok</a
+          > and anomaly detection models at
+          <a
+            href="https://mlp.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Millennium Management</a
+          >. 
+        </p>
 
+        <p>
+         It's always been my dream to work at a startup in the Valley, especially in my area of interest of ML. Do reach out if you're a startup and have some interesting opportunities that I might be a fit for!
+        </p>
 
-        <!-- <section>
-          <h2>Books I'm reading / plan to read</h2>
-          <ul>
-            <li>
-              Why Greatness Cannot Be Planned: The Myth of the Objective by
-              Kenneth O. Stanley, Joel Lehman
-            </li>
-            <li>
-              The Almanack Of Naval Ravikant: A Guide to Wealth and Happiness by
-              Eric Jorgenson
-            </li>
-            <li>Man's Search for Meaning by Viktor Frankl</li>
-          </ul>
-          <br />
-          <p>
-            I'm on the hunt for really good book recommendations, hit me up if
-            you have any!
-          </p>
-        </section> -->
+        <nav class="socials">
+          <a href="mailto:official@arul.me" aria-label="Email" title="Email">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="m2 7 10 6 10-6"></path>
+            </svg>
+          </a>
+          <a
+            href="https://blog.arul.me"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Blog"
+            title="Blog"
+          >
+            <svg viewBox="3 3 18 18" fill="currentColor" fill-rule="evenodd" aria-hidden="true">
+              <path
+                d="M12 3.975H9c-2.775 0-5.025 2.25-5.025 5.025v6c0 2.774 2.25 5.024 5.025 5.024h6c2.774 0 5.024-2.25 5.024-5.024v-3.975c0-.6-.45-1.05-1.05-1.05H18c-.524 0-.976-.45-.976-.976 0-2.776-2.25-5.026-5.024-5.026zm3.074 12H9c-.525 0-.975-.45-.975-.975s.45-.976.975-.976h6.074c.526 0 .977.45.977.976s-.45.976-.975.976zm-2.55-7.95c.527 0 .976.45.976.975s-.45.975-.975.975h-3.6c-.525 0-.976-.45-.976-.975s.45-.975.975-.975h3.6z"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/arul-k/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            title="LinkedIn"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.8v1.64h.05c.53-.95 1.83-1.95 3.77-1.95C21.6 8.69 22 11.1 22 14.24V21h-4v-6c0-1.43-.03-3.28-2-3.28-2 0-2.31 1.56-2.31 3.17V21h-4V9z"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href="https://github.com/xxdydx"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            title="GitHub"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.24 2.75.12 3.04.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.2.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href="https://resume.arul.me"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Resume"
+            title="Resume"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <path d="M14 2v6h6"></path>
+              <path d="M8 13h8"></path>
+              <path d="M8 17h5"></path>
+            </svg>
+          </a>
+        </nav>
       </main>
     </div>
-
-    <script>
-      // Minimal JavaScript for dark mode toggle
-      document.addEventListener("DOMContentLoaded", function () {
-        // Check for saved theme preference or use system preference
-        const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)"
-        ).matches;
-        const savedTheme = localStorage.getItem("theme");
-
-        if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
-          document.documentElement.classList.add("dark");
-        }
-
-        // Theme toggle button
-        const themeToggle = document.querySelector(".theme-toggle");
-        themeToggle.addEventListener("click", function () {
-          const isDark = document.documentElement.classList.toggle("dark");
-          localStorage.setItem("theme", isDark ? "dark" : "light");
-        });
-      });
-    </script>
   </body>
 </html>
